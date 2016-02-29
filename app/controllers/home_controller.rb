@@ -3,7 +3,8 @@ class HomeController < ApplicationController
   after_action :footer
 
   def index
-    response.write "hi from HomeController"
+    @message = "hi from HomeController"
+    render :index
   end
 
   def header

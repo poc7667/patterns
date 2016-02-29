@@ -1,6 +1,17 @@
 require "erb"
+require 'pry'
 
 module Rendering
+
+  def render(action)
+    response.write render_to_string(action)
+  end
+
+  def render_to_string(action)
+    tmpl_file = template_path(action)
+    ERB.new(File.read(tmpl_file)).result(binding)
+  end
+
   def template_path(action)
     "app/views/#{controller_name}/#{action}.html.erb"
   end
