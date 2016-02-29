@@ -23,6 +23,6 @@ class Child < Parent
 end
 
 puts Parent.ancestors
-
+puts Child.ancestors
 # object = Child.new
 # object.say
