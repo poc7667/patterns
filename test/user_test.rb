@@ -1,4 +1,4 @@
-require "test_helper"
+require File.dirname(__FILE__) + '/test_helper'
 require "active_record"
 require "user"
 
@@ -12,6 +12,15 @@ class UserTest < ActiveSupport::TestCase
   def test_find
     user = User.find(1)
     assert_kind_of User, user
+    assert_equal 1, user.id
+  end
+
+  def test_all
+    users = User.all
+    p users
+    assert_kind_of Array, users
+    user = users.first
+    p user
     assert_equal 1, user.id
   end
 end

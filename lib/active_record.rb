@@ -27,6 +27,16 @@ module ActiveRecord
       new attributes
     end
 
+    def self.all
+      find_by_sql("SELECT * FROM #{table_name} LIMIT 1")
+    end
+
+    def self.find_by_sql(sql)
+      @@connection.execute(sql).map do |attributes|
+        new attributes
+      end
+    end
+
     def self.table_name
       name.downcase + "s" # => "users"
     end
